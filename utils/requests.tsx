@@ -16,8 +16,10 @@ export interface Result {
     backdrop_path: string;
     genre_ids: number[];
     vote_count: number;
+    first_air_date: string;
     original_language: string;
     original_title: string;
+    original_name: string;
     poster_path: string;
     video: boolean;
     id: number;
