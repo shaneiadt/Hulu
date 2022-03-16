@@ -28,7 +28,7 @@ export default Home
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const genre = query.genre;
-  const url = typeof genre === 'string' ? requests[genre].url : requests.fetechTrending.url;
+  const url = typeof genre === 'string' ? requests[genre]?.url : requests.fetchTrending.url;
 
   const request: { results: Result[] } = await fetch(`https://api.themoviedb.org/3${url}`).then(res => res.json());
 
