@@ -1,13 +1,14 @@
 import { ThumbUpIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
-import React from 'react'
+import React, { forwardRef } from 'react'
+
 import { Result } from '../utils/requests';
 
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/original/';
 
-const Thumbnail: React.FC<{ result: Result }> = ({ result: { title, original_title, poster_path, backdrop_path, overview, media_type, release_date, first_air_date, vote_count } }) => {
+const Thumbnail = forwardRef<HTMLDivElement, { result: Result }>(({ result: { title, original_title, poster_path, backdrop_path, overview, media_type, release_date, first_air_date, vote_count } }, ref) => {
     return (
-        <div className='p-2 group cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50'>
+        <div ref={ref} className='p-2 group cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50'>
             <Image
                 layout='responsive'
                 src={`${BASE_IMG_URL}${backdrop_path || poster_path}`}
@@ -25,6 +26,6 @@ const Thumbnail: React.FC<{ result: Result }> = ({ result: { title, original_tit
             </div>
         </div>
     )
-}
+});
 
 export default Thumbnail;
